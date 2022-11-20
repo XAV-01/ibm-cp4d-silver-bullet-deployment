@@ -41,7 +41,7 @@ Please make a copy of configuration_template.yaml and then modify the configurat
 Run below command to deploy your python code package:
 
 ```
-python deploy_code_package.py --yamm_file [your_yaml_file] --test_run [True/False]
+python deploy_code_package.py --yaml_file [your_yaml_file] --test_run [True/False]
 ```
 
 - If set "test_run" to be **True**: run the job immediately after deployment
