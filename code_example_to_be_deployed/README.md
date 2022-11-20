@@ -1,6 +1,6 @@
 # Update
 
-- Getting input to score function
+- Getting input from score function
 
 ## get input from score function
 
