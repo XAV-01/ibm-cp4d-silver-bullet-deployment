@@ -157,6 +157,7 @@ if __name__ == '__main__':
                     send_email(smtp_server, sender, receivers, message)
                 return {"predictions": [{"values": ["stderr", stderr]}]}  
 
+
             else:
                 if send_email_when_successful:
                     ############### send successful notification ###############
@@ -167,17 +168,14 @@ if __name__ == '__main__':
                     {}
                     ### End of Message ###""".format(date_str, receivers, stdout)
                     send_email(smtp_server, sender, receivers, message)
-                json_string = "no_str"
                 try :
                     jsondata = ast.literal_eval(stdout)
-                    #jsondata = json.loads(json_string)
-                    #values = {"predictions_2": [{"msg": [jsondata]}]} 
-                    values = jsondata
-                except Exception as e :
-                    values = {"error": [{"msg": [stdout , json_string, " - err: " + str(e)]}]}
-                return {"predictions": [values]}
-                #return {"predictions": [{"values": ["v","ok" ,values]}]}  
+                    values = [jsondata]
+                    return {'predictions': [{'values': [['OK', jsondata, stdout,stderr, prj_info['main_file']]]}]}
+                    return {"predictions": [values]}
 
+                except Exception as e :
+                    return {'predictions': [{'values': [['KO', stdout,stderr, prj_info['main_file']]]}]}
         return score
 
 
